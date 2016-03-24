@@ -3,7 +3,7 @@ DEPS = $(shell go list -f '{{range .TestImports}}{{.}} {{end}}' ./...)
 PACKAGES = $(shell go list ./...)
 VETARGS?=-asmdecl -atomic -bool -buildtags -copylocks -methods \
          -nilfunc -printf -rangeloops -shift -structtags -unsafeptr
-VERSION?=$(shell awk -F\" '/^const Version/ { print $$2; exit }' main/version.go)
+VERSION?=$(shell awk -F\" '/^const Version/ { print $$2; exit }' version.go)
 
 all: deps format
 	@mkdir -p bin/

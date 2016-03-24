@@ -1,0 +1,14 @@
+[Unit]
+Description=journald forwarder to gelf endpoint
+Requires=network-online.target
+After=network-online.target
+After=systemd-journald.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/j2g
+ExecStart=/usr/sbin/j2g
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

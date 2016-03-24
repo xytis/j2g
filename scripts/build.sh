@@ -17,8 +17,10 @@ GIT_DIRTY=$(test -n "`git status --porcelain`" && echo "+CHANGES" || true)
 GIT_DESCRIBE=$(git describe --tags)
 
 # Determine the arch/os combos we're building for
-XC_ARCH=${XC_ARCH:-"386 amd64"}
-XC_OS=${XC_OS:-"solaris darwin freebsd linux"}
+#XC_ARCH=${XC_ARCH:-"386 amd64"}
+#XC_OS=${XC_OS:-"solaris darwin freebsd linux"}
+XC_ARCH=${XC_ARCH:-"amd64"}
+XC_OS=${XC_OS:-"linux"}
 
 # Install dependencies
 echo "==> Getting dependencies..."
@@ -39,6 +41,7 @@ fi
 # Build!
 echo "==> Building..."
 $GOPATH/bin/gox \
+  -verbose \
   -os="${XC_OS}" \
   -arch="${XC_ARCH}" \
   -ldflags "-X main.GitCommit ${GIT_COMMIT}${GIT_DIRTY} -X main.GitDescribe ${GIT_DESCRIBE}" \
