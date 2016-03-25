@@ -21,11 +21,14 @@ For futher info try j2g help
 %install
 mkdir -p %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{systemddir}
+mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig
 
 cp %{_builddir}/%{name}-%{version}/%{name} %{buildroot}/%{_sbindir}
 cp %{_sourcedir}/%{name}.service %{buildroot}/%{systemddir}/%{name}.service
+cp %{_sourcedir}/%{name}.sysconfig %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 
 %files
+%config(noreplace) %{_sysconfdir}/sysconfig/j2g
 %{systemddir}/j2g.service
 %{_sbindir}/j2g
 
