@@ -1,0 +1,3 @@
+# j2g environment parameters
+# GELF_HOST="127.0.0.1"
+# GELF_PORT="12201"
